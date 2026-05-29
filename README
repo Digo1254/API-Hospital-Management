@@ -1,0 +1,83 @@
+# Hospital API
+
+API REST para gerenciamento hospitalar desenvolvida com Java e Spring Boot.
+
+## Sobre o projeto
+
+Desenvolvi essa API como projeto pessoal para praticar e demonstrar conhecimentos em desenvolvimento backend. O sistema permite gerenciar consultas, internações e prescrições de um hospital, com controle de acesso por tipo de usuário.
+
+## Tecnologias utilizadas
+
+- Java 21
+- Spring Boot 4
+- Spring Security + JWT
+- PostgreSQL
+- Swagger/OpenAPI
+- JUnit 5 + Mockito
+- Docker + Docker Compose
+
+## Como rodar
+
+### Com Docker (recomendado)
+docker-compose up --build
+
+A API estará disponível em `http://localhost:8080`
+
+### Sem Docker
+
+1. Instale Java 21, Maven e PostgreSQL
+2. Crie um banco de dados chamado `hospitaldb`
+3. Copie `application.properties.example` para `application.properties` e preencha suas credenciais
+4. Rode:
+mvn spring-boot:run
+
+## Documentação
+
+Acesse o Swagger em `http://localhost:8080/swagger-ui/index.html`
+
+## Autenticação
+
+1. Cadastre um usuário: `POST /auth/register`
+2. Faça login: `POST /auth/login` — retorna um token JWT
+3. Use o token nas requisições: `Authorization: Bearer {token}`
+
+## Endpoints principais
+
+### Auth
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | /auth/register | Cadastrar usuário |
+| POST | /auth/login | Login |
+
+### Consulta
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | /consulta | Criar consulta |
+| GET | /consulta/{id} | Buscar por id |
+| PUT | /consulta/{id} | Atualizar |
+| DELETE | /consulta/{id} | Deletar |
+| GET | /consulta/medico/{id} | Listar por médico |
+| GET | /consulta/paciente/{id} | Listar por paciente |
+| GET | /consulta/data | Listar por data |
+
+### Internação
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | /internacao | Criar internação |
+| GET | /internacao/{id} | Buscar por id |
+| PUT | /internacao/{id} | Atualizar |
+| DELETE | /internacao/{id} | Deletar |
+| GET | /internacao/medico/{id} | Listar por médico |
+| GET | /internacao/enfermeiro/{id} | Listar por enfermeiro |
+| GET | /internacao/active | Listar internações ativas |
+| PATCH | /internacao/{id}/alta | Dar alta ao paciente |
+
+### Prescrição
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | /prescricao | Criar prescrição |
+| GET | /prescricao/{id} | Buscar por id |
+| PUT | /prescricao/{id} | Atualizar |
+| DELETE | /prescricao/{id} | Deletar |
+| GET | /prescricao/medico/{id} | Listar por médico |
+| GET | /prescricao/paciente/{id} | Listar por paciente |
