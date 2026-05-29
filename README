@@ -23,6 +23,9 @@ docker-compose up --build
 
 A API estará disponível em `http://localhost:8080`
 
+## API em produção
+https://api-hospital-management-g2v0.onrender.com/swagger-ui/index.html
+
 ### Sem Docker
 
 1. Instale Java 21, Maven e PostgreSQL
